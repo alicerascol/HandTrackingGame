@@ -42,6 +42,9 @@ namespace Leap.Unity {
     [SerializeField]
     protected bool _isHeadMounted = false;
 
+    [SerializeField]
+    protected LeapVRTemporalWarping _temporalWarping;
+
     [Tooltip("When enabled, the provider will only calculate one leap frame instead of two.")]
     [SerializeField]
     protected FrameOptimizationMode _frameOptimization = FrameOptimizationMode.None;
@@ -176,6 +179,7 @@ namespace Leap.Unity {
         _isHeadMounted = true;
       }
 
+      _temporalWarping = GetComponentInParent<LeapVRTemporalWarping>();
       _frameOptimization = FrameOptimizationMode.None;
       _updateHandInPrecull = false;
     }
@@ -391,17 +395,29 @@ namespace Leap.Unity {
 
     protected void transformFrame(Frame source, Frame dest, bool resampleTemporalWarping = true) {
       LeapTransform leapTransform;
-     
-      leapTransform = transform.GetLeapMatrix();
-      
+      if (_temporalWarping != null) {
+        if (resampleTemporalWarping) {
+          _temporalWarping.TryGetWarpedTransform(LeapVRTemporalWarping.WarpedAnchor.CENTER, out warpedPosition, out warpedRotation, source.Timestamp);
+          warpedRotation = warpedRotation * transform.localRotation;
+        }
+
+        leapTransform = new LeapTransform(warpedPosition.ToVector(), warpedRotation.ToLeapQuaternion(), transform.lossyScale.ToVector() * 1e-3f);
+        leapTransform.MirrorZ();
+      } else {
+        leapTransform = transform.GetLeapMatrix();
+      }
 
       dest.CopyFrom(source).Transform(leapTransform);
     }
 
     protected void transformHands(ref LeapTransform LeftHand, ref LeapTransform RightHand) {
       LeapTransform leapTransform;
-
-	  leapTransform = transform.GetLeapMatrix();
+      if (_temporalWarping != null) {
+        leapTransform = new LeapTransform(warpedPosition.ToVector(), warpedRotation.ToLeapQuaternion(), transform.lossyScale.ToVector() * 1e-3f);
+        leapTransform.MirrorZ();
+      } else {
+        leapTransform = transform.GetLeapMatrix();
+      }
 
       LeftHand = new LeapTransform(leapTransform.TransformPoint(LeftHand.translation), leapTransform.TransformQuaternion(LeftHand.rotation));
       RightHand = new LeapTransform(leapTransform.TransformPoint(RightHand.translation), leapTransform.TransformQuaternion(RightHand.rotation));

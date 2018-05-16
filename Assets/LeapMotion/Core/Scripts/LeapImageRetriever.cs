@@ -295,6 +295,8 @@ namespace Leap.Unity {
         StartCoroutine(waitForController());
       }
 
+      LeapVRCameraControl.OnLeftPreRender += ApplyCameraProjectionValues;
+      LeapVRCameraControl.OnRightPreRender += ApplyCameraProjectionValues;
     }
 
     void OnDisable() {
@@ -303,7 +305,9 @@ namespace Leap.Unity {
       if (controller != null) {
         _provider.GetLeapController().DistortionChange -= onDistortionChange;
       }
-				
+
+      LeapVRCameraControl.OnLeftPreRender -= ApplyCameraProjectionValues;
+      LeapVRCameraControl.OnRightPreRender -= ApplyCameraProjectionValues;
     }
 
     void OnDestroy() {

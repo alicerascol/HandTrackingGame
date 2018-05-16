@@ -50,9 +50,11 @@ namespace Leap.Unity {
      * The finger to compare to the specified direction.
      * @since 4.1.2
      */
-    [Tooltip("The finger to observe.")]
-    public Finger.FingerType FingerName = Finger.FingerType.TYPE_INDEX;
+    [Tooltip("The forward finger to observe.")]
+    public Finger.FingerType ForwardFingerName = Finger.FingerType.TYPE_INDEX;
 
+    [Tooltip("The backward finger to observe.")]
+    public Finger.FingerType BackwardFingerName = Finger.FingerType.TYPE_PINKY;
 
     /**
      * Specifies how to interprete the direction specified by PointingDirection.
@@ -87,6 +89,7 @@ namespace Leap.Unity {
      */
     [Tooltip("A target object(optional). Use PointingType.AtTarget")]
     [DisableIf("PointingType", isNotEqualTo: PointingType.AtTarget)]
+    GameObject _target;
     public Transform TargetObject = null;
     /**
      * The turn-on angle. The detector activates when the specified finger points within this
@@ -95,7 +98,7 @@ namespace Leap.Unity {
      */
     [Tooltip("The angle in degrees from the target direction at which to turn on.")]
     [Range(0, 180)]
-    public float OnAngle = 15f; //degrees
+    public static float OnAngle = 35f; //degrees
 
     /**
     * The turn-off angle. The detector deactivates when the specified finger points more than this
@@ -104,7 +107,7 @@ namespace Leap.Unity {
     */
     [Tooltip("The angle in degrees from the target direction at which to turn off.")]
     [Range(0, 180)]
-    public float OffAngle = 25f; //degrees
+    public static float OffAngle = 45f; //degrees
     /** Whether to draw the detector's Gizmos for debugging. (Not every detector provides gizmos.)
      * @since 4.1.2 
      */
@@ -114,13 +117,31 @@ namespace Leap.Unity {
 
     private IEnumerator watcherCoroutine;
 
+
     private void OnValidate(){
       if( OffAngle < OnAngle){
         OffAngle = OnAngle;
       }
     }
 
+    private Camera cam;
+    public float speed = 1f;
+
+    public void Start () {
+      cam = GameObject.Find("newCamera").GetComponent<Camera>();
+    }
+
+    public void FixedUpdate () {
+      if(HandModel != null && HandModel.IsTracked && forwardAngleTo <= OnAngle && backwardAngleTo > OnAngle) {
+        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + speed * Time.fixedDeltaTime);
+      }
+      if(HandModel != null && HandModel.IsTracked && backwardAngleTo <= OnAngle && forwardAngleTo > OnAngle) {
+        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z - speed * Time.fixedDeltaTime);
+      }
+    }
+
     private void Awake () {
+      // _target = GameObject.FindWithTag("PickupCube");
       watcherCoroutine = fingerPointingWatcher();
     }
 
@@ -133,21 +154,38 @@ namespace Leap.Unity {
       Deactivate();
     }
 
+    public static float forwardAngleTo;
+    public static Vector3 forwardFingerDirection;
+    public static float backwardAngleTo;
+    public static Vector3 backwardFingerDirection;
+    public static int selectedFinger;
     private IEnumerator fingerPointingWatcher() {
       Hand hand;
-      Vector3 fingerDirection;
-      Vector3 targetDirection;
-      int selectedFinger = selectedFingerOrdinal();
-      while(true){
+      Vector3 forwardTargetDirection;
+      Vector3 backwardTargetDirection;
+
+      int forwardSelectedFinger = selectedForwardFingerOrdinal();
+      int backwardSelectedFinger = selectedBackwardFingerOrdinal();
+
+      while(true) {
         if(HandModel != null && HandModel.IsTracked){
           hand = HandModel.GetLeapHand();
-          if(hand != null){
-            targetDirection = selectedDirection(hand.Fingers[selectedFinger].TipPosition.ToVector3());
-            fingerDirection = hand.Fingers[selectedFinger].Bone(Bone.BoneType.TYPE_DISTAL).Direction.ToVector3();
-            float angleTo = Vector3.Angle(fingerDirection, targetDirection);
-            if(HandModel.IsTracked && angleTo <= OnAngle){
+          if(hand != null) {
+            forwardTargetDirection = selectedDirection(hand.Fingers[forwardSelectedFinger].TipPosition.ToVector3());
+            forwardFingerDirection = hand.Fingers[forwardSelectedFinger].Bone(Bone.BoneType.TYPE_DISTAL).Direction.ToVector3();
+            forwardAngleTo = Vector3.Angle(forwardFingerDirection, forwardTargetDirection);
+            if(HandModel.IsTracked && forwardAngleTo <= OnAngle){
               Activate();
-            } else if (!HandModel.IsTracked || angleTo >= OffAngle) {
+            } else if (!HandModel.IsTracked || forwardAngleTo >= OffAngle) {
+              Deactivate();
+            }
+
+            backwardTargetDirection = selectedDirection(hand.Fingers[backwardSelectedFinger].TipPosition.ToVector3());
+            backwardFingerDirection = hand.Fingers[backwardSelectedFinger].Bone(Bone.BoneType.TYPE_DISTAL).Direction.ToVector3();
+            backwardAngleTo = Vector3.Angle(backwardFingerDirection, backwardTargetDirection);
+            if(HandModel.IsTracked && backwardAngleTo <= OnAngle){
+              Activate();
+            } else if (!HandModel.IsTracked || backwardAngleTo >= OffAngle) {
               Deactivate();
             }
           }
@@ -168,14 +206,15 @@ namespace Leap.Unity {
         case PointingType.RelativeToWorld:
           return PointingDirection;
         case PointingType.AtTarget:
+          Debug.Log(tipPosition);
           return TargetObject.position - tipPosition;
         default:
           return PointingDirection;
       }
     }
 
-    private int selectedFingerOrdinal(){
-      switch(FingerName){
+    private int selectedForwardFingerOrdinal () {
+      switch(ForwardFingerName){
         case Finger.FingerType.TYPE_INDEX:
           return 1;
         case Finger.FingerType.TYPE_MIDDLE:
@@ -191,6 +230,24 @@ namespace Leap.Unity {
       }
     }
 
+    private int selectedBackwardFingerOrdinal () {
+      switch(BackwardFingerName){
+        case Finger.FingerType.TYPE_INDEX:
+          return 1;
+        case Finger.FingerType.TYPE_MIDDLE:
+          return 2;
+        case Finger.FingerType.TYPE_PINKY:
+          return 4;
+        case Finger.FingerType.TYPE_RING:
+          return 3;
+        case Finger.FingerType.TYPE_THUMB:
+          return 0;
+        default:
+          return 1;
+      }
+    }
+
+
   #if UNITY_EDITOR
     private void OnDrawGizmos () {
       if (ShowGizmos && HandModel != null && HandModel.IsTracked) {
@@ -200,12 +257,19 @@ namespace Leap.Unity {
         } else {
           innerColor = OffColor;
         }
-        Finger finger = HandModel.GetLeapHand().Fingers[selectedFingerOrdinal()];
-        Vector3 fingerDirection = finger.Bone(Bone.BoneType.TYPE_DISTAL).Direction.ToVector3();
-        Utils.DrawCone(finger.TipPosition.ToVector3(), fingerDirection, OnAngle, finger.Length, innerColor);
-        Utils.DrawCone(finger.TipPosition.ToVector3(), fingerDirection, OffAngle, finger.Length, LimitColor);
+        Finger forwardFinger = HandModel.GetLeapHand().Fingers[selectedForwardFingerOrdinal()];
+        Vector3 forwardFingerDirection = forwardFinger.Bone(Bone.BoneType.TYPE_DISTAL).Direction.ToVector3();
+        Utils.DrawCone(forwardFinger.TipPosition.ToVector3(), forwardFingerDirection, OnAngle, forwardFinger.Length, innerColor);
+        Utils.DrawCone(forwardFinger.TipPosition.ToVector3(), forwardFingerDirection, OffAngle, forwardFinger.Length, LimitColor);
         Gizmos.color = DirectionColor;
-        Gizmos.DrawRay(finger.TipPosition.ToVector3(), selectedDirection(finger.TipPosition.ToVector3()));
+        Gizmos.DrawRay(forwardFinger.TipPosition.ToVector3(), selectedDirection(forwardFinger.TipPosition.ToVector3()));
+
+        Finger backwardFinger = HandModel.GetLeapHand().Fingers[selectedBackwardFingerOrdinal()];
+        Vector3 backwardFingerDirection = backwardFinger.Bone(Bone.BoneType.TYPE_DISTAL).Direction.ToVector3();
+        Utils.DrawCone(backwardFinger.TipPosition.ToVector3(), backwardFingerDirection, OnAngle, backwardFinger.Length, innerColor);
+        Utils.DrawCone(backwardFinger.TipPosition.ToVector3(), backwardFingerDirection, OffAngle, backwardFinger.Length, LimitColor);
+        Gizmos.color = DirectionColor;
+        Gizmos.DrawRay(backwardFinger.TipPosition.ToVector3(), selectedDirection(backwardFinger.TipPosition.ToVector3()));
       }
     }
   #endif

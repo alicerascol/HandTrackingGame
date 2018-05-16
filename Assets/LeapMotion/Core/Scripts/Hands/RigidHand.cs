@@ -30,7 +30,6 @@ namespace Leap.Unity {
     }
 
     public override void UpdateHand() {
-			Debug.Log ("finger type: ");
 
       for (int f = 0; f < fingers.Length; ++f) {
         if (fingers[f] != null) {

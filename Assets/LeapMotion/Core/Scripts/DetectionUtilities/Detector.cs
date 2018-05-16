@@ -47,6 +47,13 @@ namespace Leap.Unity {
     [Tooltip("Dispatched when condition is no longer detected.")]
     public UnityEvent OnDeactivate;
 
+      
+    public void Start () {
+      
+    }
+    public void FixedUpdate () {
+    }
+
     /**
     * Invoked when this detector activates.
     * Subclasses must call this function when the detector's conditions become true.
