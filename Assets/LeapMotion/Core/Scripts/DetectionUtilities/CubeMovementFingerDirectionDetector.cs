@@ -139,11 +139,9 @@ namespace Leap.Unity {
     public void FixedUpdate () {
       if(HandModel != null && HandModel.IsTracked && forwardAngleTo <= OnAngle && backwardAngleTo > OnAngle) {
         rbPlayer.AddForce(-speed * Time.fixedDeltaTime, 0, 0);
-        Debug.Log("TYPE_INDEX");
       }
       if(HandModel != null && HandModel.IsTracked && backwardAngleTo <= OnAngle && forwardAngleTo > OnAngle) {
         rbPlayer.AddForce(speed * Time.fixedDeltaTime, 0, 0);
-        Debug.Log("TYPE_PINKY");
       }
     }
 

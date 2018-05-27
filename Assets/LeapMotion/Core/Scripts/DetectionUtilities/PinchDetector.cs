@@ -101,10 +101,8 @@ namespace Leap.Unity {
 
 
   GameObject _target;
-
-
   public void Start () {
-    _target = GameObject.FindWithTag("PickupCube");
+    _target = GameObject.FindWithTag("PlayerJumpingCube");
     Debug.Log("_target -> " + _target.name);
   }
 

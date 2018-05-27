@@ -9,6 +9,12 @@ TagManager:
   - SouthWall
   - WestWall
   - EstWall
+  - PickupCube
+  - Obstacle
+  - PlayerCubeMovement
+  - Ground
+  - Brick
+  - PlayerJumpingCube
   layers:
   - Default
   - TransparentFX

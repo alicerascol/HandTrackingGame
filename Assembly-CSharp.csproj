@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C7E79F45-C68D-4429-E286-D0F974B76386}</ProjectGuid>
+    <ProjectGuid>{8AABC60F-9805-1846-0594-6F5093272F52}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -264,7 +264,6 @@
      <Compile Include="Assets\scripts\CameraMovement.cs" />
      <Compile Include="Assets\scripts\ControlGestures.cs" />
      <Compile Include="Assets\scripts\CreateCubesScript.cs" />
-     <Compile Include="Assets\scripts\GesturesScript.cs" />
      <Compile Include="Assets\scripts\Login.cs" />
      <Compile Include="Assets\scripts\Register.cs" />
      <None Include="Assets\LeapMotion\Core\Resources\LeapCG.cginc" />
@@ -344,10 +343,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="LeapCSharp.NET3.5">
- <HintPath>C:/facultate/licenta/asdf/Assets/LeapMotion/Core/Plugins/LeapCSharp.NET3.5.dll</HintPath>
+ <HintPath>C:/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Plugins/LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
  <Reference Include="InteractionEngineUtility">
- <HintPath>C:/facultate/licenta/asdf/Assets/LeapMotionModules/InteractionEngine/Plugins/InteractionEngineUtility.dll</HintPath>
+ <HintPath>C:/facultate/licenta/jocLicenta/Assets/LeapMotionModules/InteractionEngine/Plugins/InteractionEngineUtility.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/Mindit/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
