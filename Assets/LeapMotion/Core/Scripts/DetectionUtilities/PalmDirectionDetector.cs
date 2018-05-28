@@ -6,7 +6,7 @@
  * https://developer.leapmotion.com/sdk_agreement, or another agreement       *
  * between Leap Motion and you, your company or other organization.           *
  ******************************************************************************/
-
+using System;
 using UnityEngine;
 using System.Collections;
 using Leap.Unity.Attributes;
@@ -74,7 +74,7 @@ namespace Leap.Unity {
     */
     [Tooltip("The target direction.")]
     [DisableIf("PointingType", isEqualTo: PointingType.AtTarget)]
-    public Vector3 PointingDirection = Vector3.forward;
+    public Vector3 PointingDirection = Vector3.forward - new Vector3(90, 0,0);
 
     /**
      * The object to point at when the PointingType is "AtTarget." Ignored otherwise.
@@ -108,6 +108,26 @@ namespace Leap.Unity {
     [Tooltip("Draw this detector's Gizmos, if any. (Gizmos must be on in Unity edtor, too.)")]
     public bool ShowGizmos = true;
 
+
+    [Tooltip("Player that will have to move as the hands dictate.")]
+    public GameObject player;
+
+    Rigidbody rbPlayer;
+    public void Start () {
+      player = GameObject.FindWithTag("PlayerLegoMovement");
+      rbPlayer = player.GetComponent<Rigidbody>();
+    }
+
+    public float speed = 700f;
+    public void FixedUpdate () {
+      if(HandModel != null && HandModel.IsTracked && angleTo > 65f) {
+        rbPlayer.AddForce(-speed * Time.fixedDeltaTime, 0, 0);
+      }
+      if(HandModel != null && HandModel.IsTracked && angleTo < -65f) {
+        rbPlayer.AddForce(speed * Time.fixedDeltaTime, 0, 0);
+      }
+    }
+
     private IEnumerator watcherCoroutine;
 
     private void OnValidate(){
@@ -129,6 +149,7 @@ namespace Leap.Unity {
       Deactivate();
     }
 
+    public static float angleTo;
     private IEnumerator palmWatcher() {
       Hand hand;
       Vector3 normal;
@@ -137,11 +158,15 @@ namespace Leap.Unity {
           hand = HandModel.GetLeapHand();
           if(hand != null){
             normal = hand.PalmNormal.ToVector3();
-            float angleTo = Vector3.Angle(normal, selectedDirection(hand.PalmPosition.ToVector3()));
-            if(angleTo <= OnAngle){
-              Activate();
-            } else if(angleTo > OffAngle) {
+            //hand.PalmPosition.ToVector3() = position of the camera; hand is a child of the camera
+            angleTo = Vector3.SignedAngle(normal, selectedDirection(hand.PalmPosition.ToVector3()), Vector3.up);
+            if(Math.Abs(angleTo) <= OnAngle){
               Deactivate();
+              Debug.Log("Activate: angleTo -> " + angleTo + "; OnAngle -> " + OnAngle + "; OffAngle -> " + OffAngle + "; normal = " + normal);
+            } else if(Math.Abs(angleTo) > OffAngle) {
+              Debug.Log("Deactivate: angleTo -> " + angleTo + "; OnAngle -> " + OnAngle + "; OffAngle -> " + OffAngle + "; normal = " + normal);
+              // Deactivate();
+              Activate();
             }
           }
         }
@@ -152,9 +177,12 @@ namespace Leap.Unity {
     private Vector3 selectedDirection (Vector3 tipPosition) {
       switch (PointingType) {
         case PointingType.RelativeToHorizon:
+          // Debug.Log("Vector3.forward = " + PointingDirection);
           Quaternion cameraRot = Camera.main.transform.rotation;
+          // Debug.Log("cameraRot = " + cameraRot);
           float cameraYaw = cameraRot.eulerAngles.y;
           Quaternion rotator = Quaternion.AngleAxis(cameraYaw, Vector3.up);
+          // Debug.Log("rotator = " + rotator);
           return rotator * PointingDirection;
         case PointingType.RelativeToCamera:
           return Camera.main.transform.TransformDirection(PointingDirection);
@@ -179,6 +207,8 @@ namespace Leap.Unity {
           centerColor = OffColor;
         }
         Hand hand = HandModel.GetLeapHand();
+        // Debug.Log("hand.PalmPosition.ToVector3() = " + hand.PalmPosition.ToVector3());
+        // Debug.Log("hand.PalmNormal.ToVector3() = " + hand.PalmNormal.ToVector3());
         Utils.DrawCone(hand.PalmPosition.ToVector3(), hand.PalmNormal.ToVector3(), OnAngle, hand.PalmWidth, centerColor, 8);
         Utils.DrawCone(hand.PalmPosition.ToVector3(), hand.PalmNormal.ToVector3(), OffAngle, hand.PalmWidth, LimitColor, 8);
         Gizmos.color = DirectionColor;

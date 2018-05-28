@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/JumpingCubeGame.unity
+- path: Assets/scenes/MovingCubeGame.unity
   isLoaded: 1
   isActive: 1

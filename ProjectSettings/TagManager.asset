@@ -5,16 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayGround
-  - NorthWall
-  - SouthWall
-  - WestWall
-  - EstWall
   - PickupCube
   - Obstacle
-  - PlayerCubeMovement
   - Ground
   - Brick
   - PlayerJumpingCube
+  - PlayerLegoMovement
   layers:
   - Default
   - TransparentFX
