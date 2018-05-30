@@ -162,10 +162,9 @@ namespace Leap.Unity {
             angleTo = Vector3.SignedAngle(normal, selectedDirection(hand.PalmPosition.ToVector3()), Vector3.up);
             if(Math.Abs(angleTo) <= OnAngle){
               Deactivate();
-              Debug.Log("Activate: angleTo -> " + angleTo + "; OnAngle -> " + OnAngle + "; OffAngle -> " + OffAngle + "; normal = " + normal);
+              // Debug.Log("Activate: angleTo -> " + angleTo + "; OnAngle -> " + OnAngle + "; OffAngle -> " + OffAngle + "; normal = " + normal);
             } else if(Math.Abs(angleTo) > OffAngle) {
-              Debug.Log("Deactivate: angleTo -> " + angleTo + "; OnAngle -> " + OnAngle + "; OffAngle -> " + OffAngle + "; normal = " + normal);
-              // Deactivate();
+              // Debug.Log("Deactivate: angleTo -> " + angleTo + "; OnAngle -> " + OnAngle + "; OffAngle -> " + OffAngle + "; normal = " + normal);
               Activate();
             }
           }

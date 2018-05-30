@@ -11,6 +11,9 @@ TagManager:
   - Brick
   - PlayerJumpingCube
   - PlayerLegoMovement
+  - MinionObstacle
+  - award
+  - bigPrize
   layers:
   - Default
   - TransparentFX

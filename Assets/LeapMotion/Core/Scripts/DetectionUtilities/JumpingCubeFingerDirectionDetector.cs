@@ -56,10 +56,6 @@ namespace Leap.Unity {
     [Tooltip("The backward finger to observe.")]
     public Finger.FingerType BackwardFingerName = Finger.FingerType.TYPE_PINKY;
 
-    [Tooltip("Player that will have to move as the hands dictate.")]
-    public GameObject player;
-    
-
     /**
      * Specifies how to interprete the direction specified by PointingDirection.
      * 
@@ -121,7 +117,8 @@ namespace Leap.Unity {
 
     private IEnumerator watcherCoroutine;
 
-
+    [Tooltip("Player that will have to move as the hands dictate.")]
+    public GameObject player;
     private void OnValidate(){
       if( OffAngle < OnAngle){
         OffAngle = OnAngle;

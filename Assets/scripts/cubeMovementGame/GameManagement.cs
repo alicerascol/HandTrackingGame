@@ -20,7 +20,7 @@ public class GameManagement : MonoBehaviour {
 	public void RestartGame() {
 		//current scene -> 
 		//SceneManager.LoadScene(SceneManager.GetActiveScene().name)
-		SceneManager.LoadScene("MovingCubeGame");
+		SceneManager.LoadScene("MovingLegoGame");
 	}
 
 	public void GameWonPanel() {

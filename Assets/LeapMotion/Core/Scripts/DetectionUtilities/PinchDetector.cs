@@ -72,7 +72,6 @@ namespace Leap.Unity {
       _distance = hand.PinchDistance * MM_TO_M;
       _rotation = hand.Basis.CalculateRotation();
       _position = ((hand.Fingers[0].TipPosition + hand.Fingers[1].TipPosition) * .5f).ToVector3();
-      Debug.Log("hand position -> " + _position);
 
       if (IsActive) {
         if (_distance > DeactivateDistance) {
@@ -97,49 +96,52 @@ namespace Leap.Unity {
         transform.rotation = _rotation;
       }
     }
+    
+    [Tooltip("Player that will have to move as the hands dictate.")]
+    public GameObject player;
 
+    public float speed = 300f;
+    Rigidbody rbPlayer;
 
+    public void Start () {
+      player = GameObject.FindWithTag("PlayerLegoMovement");
+      rbPlayer = player.GetComponent<Rigidbody>();
+    }
 
-  GameObject _target;
-  public void Start () {
-    _target = GameObject.FindWithTag("PlayerJumpingCube");
-    Debug.Log("_target -> " + _target.name);
-  }
+  // public void setTarget(GameObject target) {
+  //    if (_target == null) {
+  //      _target = target;
+  //    }
+  //  }
 
-  public void setTarget(GameObject target) {
-     if (_target == null) {
-       _target = target;
-     }
-   }
+  // public void pickupTarget() {
+  //     if (_target) {
+  //       // StartCoroutine(changeParent());
+  //       // Rigidbody rb = _target.gameObject.GetComponent<Rigidbody>();
+  //       // if(rb != null) {
+  //       //  rb.isKinematic = true;
+  //       // }
+  //       _target.GetComponent<Renderer> ().material.color = Color.green;
 
-  public void pickupTarget() {
-      if (_target) {
-        // StartCoroutine(changeParent());
-        // Rigidbody rb = _target.gameObject.GetComponent<Rigidbody>();
-        // if(rb != null) {
-        //  rb.isKinematic = true;
-        // }
-        _target.GetComponent<Renderer> ().material.color = Color.green;
+  //     }
+  // }
 
-      }
-  }
+  // public void releaseTarget() {
+  //    if (_target && _target.activeInHierarchy) {
+  //      if (_target.transform.parent == transform) { //Only reset if we are still the parent
+  //        Rigidbody rb = _target.gameObject.GetComponent<Rigidbody>();
+  //        if (rb != null) {
+  //          rb.isKinematic = false;
+  //        }
+  //        _target.transform.parent = null;
+  //      }
+  //      _target = null;
+  //    }
+  //  }
 
-  public void releaseTarget() {
-     if (_target && _target.activeInHierarchy) {
-       if (_target.transform.parent == transform) { //Only reset if we are still the parent
-         Rigidbody rb = _target.gameObject.GetComponent<Rigidbody>();
-         if (rb != null) {
-           rb.isKinematic = false;
-         }
-         _target.transform.parent = null;
-       }
-       _target = null;
-     }
-   }
-
-   public void clearTarget(){
-     _target = null;
-   }
+  //  public void clearTarget(){
+  //    _target = null;
+  //  }
 
 
 

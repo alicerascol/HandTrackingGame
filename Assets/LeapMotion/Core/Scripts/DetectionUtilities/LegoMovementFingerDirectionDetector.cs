@@ -28,7 +28,7 @@ namespace Leap.Unity {
    * 
    * @since 4.1.2
    */
-  public class CubeMovementFingerDirectionDetector : Detector {
+  public class LegoMovementFingerDirectionDetector : Detector {
     /**
      * The interval at which to check finger state.
      * @since 4.1.2
@@ -138,7 +138,7 @@ namespace Leap.Unity {
 
     public void FixedUpdate () {
       if(HandModel != null && HandModel.IsTracked && forwardAngleTo <= OnAngle) {
-        rbPlayer.velocity = new Vector3(0f, 5f, 0f);
+        rbPlayer.velocity = new Vector3(0f, 2f, 0f);
       }
       // if(HandModel != null && HandModel.IsTracked && backwardAngleTo <= OnAngle && forwardAngleTo > OnAngle) {
       //   rbPlayer.AddForce(speed * Time.fixedDeltaTime, 0, 0);

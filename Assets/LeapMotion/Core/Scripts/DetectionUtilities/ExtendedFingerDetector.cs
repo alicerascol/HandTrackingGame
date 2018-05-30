@@ -114,11 +114,32 @@ namespace Leap.Unity {
       StopCoroutine(watcherCoroutine);
       Deactivate();
     }
-  
+
+    [Tooltip("Player that will have to move as the hands dictate.")]
+    public GameObject player;
+    public float speed = 500f;
+    Rigidbody rbPlayer;
+    static bool playGroundTouched = true;
+
+    public void Start () {
+      player = GameObject.FindWithTag("PlayerLegoMovement");
+      rbPlayer = player.GetComponent<Rigidbody>();
+    }
+
+    public void FixedUpdate () {
+      if(HandModel != null && HandModel.IsTracked && fingerState && playGroundTouched) {
+        rbPlayer.velocity = new Vector3(0f, 4f, 0f);
+        rbPlayer.AddForce(0, 0, speed * Time.fixedDeltaTime);
+        playGroundTouched = false;
+      } else if(HandModel == null || !HandModel.IsTracked || !fingerState) {
+        playGroundTouched = true;
+      }
+    }
+
+    static bool fingerState = false;
     IEnumerator extendedFingerWatcher() {
       Hand hand;
       while(true){
-        bool fingerState = false;
         if(HandModel != null && HandModel.IsTracked){
           hand = HandModel.GetLeapHand();
           if(hand != null){
@@ -137,7 +158,7 @@ namespace Leap.Unity {
             fingerState = fingerState && 
                          (extendedCount <= MaximumExtendedCount) && 
                          (extendedCount >= MinimumExtendedCount);
-            if(HandModel.IsTracked && fingerState){
+            if(HandModel.IsTracked && fingerState) {
               Activate();
             } else if(!HandModel.IsTracked || !fingerState) {
               Deactivate();
