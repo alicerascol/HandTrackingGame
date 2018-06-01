@@ -35,7 +35,7 @@ public class MovingBrick : MonoBehaviour {
 	}
 
 	void OnCollisionStay(Collision collisionInfo) {
-		if (collisionInfo.gameObject.CompareTag("PlayerJumpingCube")) {
+		if (collisionInfo.gameObject.CompareTag("PlayerMinionJumping")) {
 			if(goLeft && !goRight) {
 				collisionInfo.gameObject.transform.position = new Vector3(collisionInfo.gameObject.transform.position.x + speed * Time.deltaTime, collisionInfo.gameObject.transform.position.y, collisionInfo.gameObject.transform.position.z);
 			} else if(!goLeft && goRight) {

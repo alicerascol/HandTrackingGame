@@ -47,7 +47,7 @@ namespace Leap.Unity {
     [Tooltip("Dispatched when condition is no longer detected.")]
     public UnityEvent OnDeactivate;
 
-      
+    //because of the protection level
     public void Start () {
       
     }

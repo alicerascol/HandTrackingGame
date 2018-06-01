@@ -9,11 +9,13 @@ TagManager:
   - Obstacle
   - Ground
   - Brick
-  - PlayerJumpingCube
   - PlayerLegoMovement
   - MinionObstacle
   - award
   - bigPrize
+  - NorthWall
+  - SouthWall
+  - PlayerMinionJumping
   layers:
   - Default
   - TransparentFX
