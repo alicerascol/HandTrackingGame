@@ -16,6 +16,7 @@ TagManager:
   - NorthWall
   - SouthWall
   - PlayerMinionJumping
+  - Coin
   layers:
   - Default
   - TransparentFX

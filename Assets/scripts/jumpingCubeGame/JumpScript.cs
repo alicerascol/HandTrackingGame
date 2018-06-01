@@ -61,11 +61,14 @@ public class JumpScript : MonoBehaviour {
 			score += 10;
 			scoreText.GetComponent<UnityEngine.UI.Text>().text = score.ToString();
 		} else if (collisionInfo.gameObject.CompareTag("MinionObstacle")) {
-			if (lives.Count > 0) {
+			if (lives.Count > 1) {
 				collisionInfo.gameObject.SetActive (false);
 				lives[lives.Count - 1].SetActive(false);
 				lives.RemoveAt(lives.Count - 1);
-			} else FindObjectOfType<JumpGameManagement>().EndGame();
+			} else {
+				lives[lives.Count - 1].SetActive(false);
+				FindObjectOfType<JumpGameManagement>().EndGame();
+			}
 		}
 	}
 
