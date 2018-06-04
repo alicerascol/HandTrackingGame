@@ -20,7 +20,9 @@ public class Register : MonoBehaviour {
 
 	private string CreateUserURL = "http://localhost/unity_game/insert_new_user.php";
 	private string CheckIfExistsURL = "http://localhost/unity_game/check_if_user_exists.php";
-
+	private string startSessionURL = "http://localhost/unity_game/start_session.php";
+	private string getUserIdURL = "http://localhost/unity_game/get_user_id.php";
+	
 	private bool userIsCreated = false;
 
 	public Text retryText;
@@ -82,6 +84,16 @@ public class Register : MonoBehaviour {
         StartCoroutine(WaitForRequest(itemsData));
         if (itemsData.text.ToString().Equals("Everything ok.")) {
         	CreateUser(username, password, email);
+
+   //      	string userId = itemsData.text.ToString().Substring(itemsData.text.ToString().Length - 5);
+			// Debug.Log("userId = " + userId);
+			// WWWForm form = new WWWForm();
+			// form.AddField("idPost", userId);
+   //      	WWW www = new WWW(startSessionURL, form);
+   //      	if (www.error != null) {
+		 //        Debug.Log("WWW Error: " + www.error);
+		 //    } else Debug.Log("Session started!");
+
         	//treci la scena urmatoare
         } else {
         	retryPanel.SetActive(true);
