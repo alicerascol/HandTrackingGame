@@ -106,7 +106,7 @@ public class Register : MonoBehaviour {
 	public void RestartScene() {
 		//current scene -> 
 		//SceneManager.LoadScene(SceneManager.GetActiveScene().name)
-		SceneManager.LoadScene("RegisterAndLogin");
+		SceneManager.LoadScene("FirstScene");
 	}
 
 	public void CreateUser(string username, string password, string email){

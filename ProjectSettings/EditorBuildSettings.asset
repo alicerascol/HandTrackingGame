@@ -4,4 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/scenes/FirstScene.unity
+    guid: 78f52077dc75cae4b81f758fee0e106b
+  - enabled: 1
+    path: Assets/scenes/Login.unity
+    guid: a3de866207de6f94c8b28cbdee011507
+  - enabled: 1
+    path: Assets/scenes/Register.unity
+    guid: a23e627b46f22684eadba5127b59f204
+  - enabled: 1
+    path: Assets/scenes/HitPlayButton.unity
+    guid: 27c8d68fab931c4409bf77bd5268bf70
+  - enabled: 1
+    path: Assets/scenes/JumpingMinionGame.unity
+    guid: 76758dd21a1c27247bb66640519d0b34
+  - enabled: 1
+    path: Assets/scenes/MovingLegoGame.unity
+    guid: 56b5b273c9c27a04ba4abb5dea6b7be4
+  m_configObjects: {}

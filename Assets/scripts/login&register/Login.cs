@@ -12,7 +12,7 @@ public class Login : MonoBehaviour {
 	public GameObject username;
 	public GameObject password;
 	public Button loginButton;
-	private string Username;
+	public static string Username;
 	private string Password;
 
 	public Text retryText;
@@ -25,7 +25,7 @@ public class Login : MonoBehaviour {
 	private string getUserIdFromSessionURL = "http://localhost/unity_game/get_id_from_session.php";
 
 
-	public Button button;
+	// public Button button;
 	private bool buttonPressed = false;
 	public static WWW wwwSession;
 
@@ -52,7 +52,7 @@ public class Login : MonoBehaviour {
 			loginButton.onClick.AddListener(delegate {CheckIfExists(itemsData, Username, Password);});
 		}
 
-		button.onClick.AddListener(delegate {getUserIdFromSession(wwwSession);});
+		// button.onClick.AddListener(delegate {getUserIdFromSession(wwwSession);});
 	}
 
 
@@ -95,11 +95,21 @@ public class Login : MonoBehaviour {
         if (itemsData.text.ToString().StartsWith("User has logged in")) {
 			putIdOnTheSession(itemsData.text.ToString().Substring(itemsData.text.ToString().Length - 5));
         	//treci la scena urmatoare
+        	Invoke("LoadNextScene", restartDelay);
         } else {
+        	Debug.Log("nu exista user");
         	retryPanel.SetActive(true);
         	retryText.text = itemsData.text.ToString();
         	Invoke("RestartScene", restartDelay);
         }
+	}
+	public void RestartScene() {
+		//current scene -> 
+		//SceneManager.LoadScene(SceneManager.GetActiveScene().name)
+		SceneManager.LoadScene("FirstScene");
+	}
+	public void LoadNextScene() {
+		SceneManager.LoadScene("HitPlayButton");
 	}
 
 	public void putIdOnTheSession (string userId) {
@@ -118,11 +128,5 @@ public class Login : MonoBehaviour {
     	   	StartCoroutine(WaitForRequest(www));
 			buttonPressed = true;
 		}
-	}
-
-	public void RestartScene() {
-		//current scene -> 
-		//SceneManager.LoadScene(SceneManager.GetActiveScene().name)
-		SceneManager.LoadScene("RegisterAndLogin");
 	}
 }
