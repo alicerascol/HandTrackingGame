@@ -20,11 +20,7 @@ public class Login : MonoBehaviour {
 	private float restartDelay = 4f;
 
 	private string CheckIfExistsURL = "http://localhost/unity_game/check_for_login.php";
-
-	// public Button button;
-	private bool buttonPressed = false;
-	public static WWW wwwSession;
-
+	
 	// Update is called once per frame
 	void Update () {
 		//tab functionality

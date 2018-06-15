@@ -27,10 +27,6 @@ public class JumpScript : MonoBehaviour {
 	    lives.Add(life1);
 	}
 	
-	private bool rightPosition = false;
-	private bool leftPosition = false;
-	private bool normalPosition = true;
-
 	// Update is called once per frame
 	void Update () {
 		if (jumpAgain && Input.GetKey("a")) {

@@ -118,11 +118,11 @@ namespace Leap.Unity {
     public static bool active = true;
     public float speed = 3f;
     public void FixedUpdate () {
-      if(HandModel != null && HandModel.IsTracked && angleTo > 65f) {
+      if(HandModel != null && HandModel.IsTracked && Math.Abs(angleTo) > 100f) {
         minion.transform.eulerAngles = new Vector3(minion.transform.eulerAngles.x, -90, minion.transform.eulerAngles.z);
         minion.transform.position += Vector3.left * speed * Time.fixedDeltaTime;
       }
-      if(HandModel != null && HandModel.IsTracked && angleTo < -65f) {
+      if(HandModel != null && HandModel.IsTracked && Math.Abs(angleTo) < 75f) {
         minion.transform.eulerAngles = new Vector3(minion.transform.eulerAngles.x, 90, minion.transform.eulerAngles.z);
         minion.transform.position += Vector3.right * speed * Time.fixedDeltaTime;
       }
@@ -160,6 +160,8 @@ namespace Leap.Unity {
             normal = hand.PalmNormal.ToVector3();
             //hand.PalmPosition.ToVector3() = position of the camera; hand is a child of the camera
             angleTo = Vector3.SignedAngle(normal, selectedDirection(hand.PalmPosition.ToVector3()), Vector3.up);
+            Debug.Log("angleTo = " + angleTo);
+            Debug.Log("selectedDirection(hand.PalmPosition.ToVector3()) = " + selectedDirection(hand.PalmPosition.ToVector3()));
             if(Math.Abs(angleTo) <= OnAngle) {
               JumpingMinionFingerDirectionDetector.active = true;
               active = false;
