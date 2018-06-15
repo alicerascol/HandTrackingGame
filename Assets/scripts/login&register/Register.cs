@@ -13,21 +13,22 @@ public class Register : MonoBehaviour {
 	public GameObject password;
 	public GameObject confirmPassword;
 	public Button registerButton;
-	private string Username;
+	public static string Username;
 	private string Email;
 	private string Password;
 	private string ConfirmPassword;
 
 	private string CreateUserURL = "http://localhost/unity_game/insert_new_user.php";
 	private string CheckIfExistsURL = "http://localhost/unity_game/check_if_user_exists.php";
-	private string startSessionURL = "http://localhost/unity_game/start_session.php";
 	private string getUserIdURL = "http://localhost/unity_game/get_user_id.php";
-	
-	private bool userIsCreated = false;
+	private string insertScoreForUserURL = "http://localhost/unity_game/insert_scores_for_user.php";
+	// private bool userIsCreated = false;
 
 	public Text retryText;
 	public GameObject retryPanel;
-	private float restartDelay = 2f;
+	private float restartDelay = 4f;
+	public static WWW wwwSession;
+
 
 	// Update is called once per frame
 	void Update () {
@@ -49,64 +50,79 @@ public class Register : MonoBehaviour {
 		Email = email.GetComponent<InputField> ().text;
 		Password = password.GetComponent<InputField> ().text;
 		ConfirmPassword = confirmPassword.GetComponent<InputField> ().text;
-		
-		if(Username != "" && Password != "" && Email != "" && ConfirmPassword != "" && !userIsCreated) {
-			userIsCreated = true;
+	}
 
-	        WWWForm form = new WWWForm();
-			//making the form
-			form.AddField("usernamePost", Username);
-			form.AddField("emailPost", Email);
-			WWW itemsData = new WWW(CheckIfExistsURL, form);
-			registerButton.onClick.AddListener(delegate {CheckIfExists(itemsData, Username, Password, Email);});
-
+	public void RegisterButton() {
+		if(Username == "" || Password == "" || Email == "" || ConfirmPassword == "" ||
+			Username == null || Password == null || Email == null || ConfirmPassword == null) {
+			retryPanel.SetActive(true);
+        	retryText.text = "You must complete all the fields!";
+        	StartCoroutine(WaitBeforSetActiveFalse());
+        } else {
+        	if (!Password.Equals(ConfirmPassword)) {
+        		retryPanel.SetActive(true);
+	        	retryText.text = "Password and Confirm Password must be the same!";
+	        	StartCoroutine(WaitBeforSetActiveFalse());
+	        } else {
+				WWWForm form = new WWWForm();
+				//making the form
+				form.AddField("usernamePost", Username);
+				form.AddField("emailPost", Email);
+				WWW itemsData = new WWW(CheckIfExistsURL, form);
+				CheckIfExists(itemsData);
+			}
 		}
+	}
+		
+	IEnumerator WaitBeforSetActiveFalse() {
+	    yield return new WaitForSeconds(3f);
+	    retryPanel.SetActive(false);
 	}
 
 	private string response;
     //Our Coroutine for getting the data
 	IEnumerator WaitForRequest(WWW www) {
 	    yield return www;
-	     
-	    //  // check for errors
-	    // if (www.error == null) {
-	    //     //Assign the data that was fetched to the variable answer
-		   //  response = www.text.ToString();
-	    //     Debug.Log(response);
-	    // } else {
-	    //     Debug.Log("WWW Error: "+ www.error);
-	    // }    
+	    if (www.text.ToString().Equals("Everything ok.")) {
+        	CreateUser(Username, Password, Email);
+        	//iei user id si pui in variabila statica
+        	GetUserId();
+   			//treci la scena urmatoare
+        	Invoke("LoadNextScene", restartDelay);
+        } else {
+        	Debug.Log(www.text.ToString());
+        	retryPanel.SetActive(true);
+        	retryText.text = www.text.ToString();
+        	Invoke("RestartScene", restartDelay);
+        }
  	}
- 
 
-	public void CheckIfExists(WWW itemsData, string username, string password, string email) {
+ 	public static string userId;
+ 	IEnumerator WaitForRequestUserId(WWW www) {
+	    yield return www;
+	    // check for errors
+	    if (www.error == null) {
+	        //Assign the data that was fetched to the variable answer
+		    userId = www.text.ToString().Remove(www.text.ToString().Length - 1).Substring(www.text.ToString().Length - 5);
+		    CreateScoreEntryForUser(); 
+	        Debug.Log("userId = " + userId);
+	    } else {
+	        Debug.Log("WWW Error: " + www.error);
+	    }    
+ 	}
+
+	public void CheckIfExists(WWW itemsData) {
 		//Start the Coroutine
         StartCoroutine(WaitForRequest(itemsData));
-        if (itemsData.text.ToString().Equals("Everything ok.")) {
-        	CreateUser(username, password, email);
-
-   //      	string userId = itemsData.text.ToString().Substring(itemsData.text.ToString().Length - 5);
-			// Debug.Log("userId = " + userId);
-			// WWWForm form = new WWWForm();
-			// form.AddField("idPost", userId);
-   //      	WWW www = new WWW(startSessionURL, form);
-   //      	if (www.error != null) {
-		 //        Debug.Log("WWW Error: " + www.error);
-		 //    } else Debug.Log("Session started!");
-
-        	//treci la scena urmatoare
-        } else {
-        	retryPanel.SetActive(true);
-        	retryText.text = itemsData.text.ToString();
-        	Invoke("RestartScene", restartDelay);
-
-        }
 	}
 
 	public void RestartScene() {
-		//current scene -> 
 		//SceneManager.LoadScene(SceneManager.GetActiveScene().name)
-		SceneManager.LoadScene("FirstScene");
+		SceneManager.LoadScene("Register");
+	}
+
+	public void LoadNextScene() {
+		SceneManager.LoadScene("HitPlayButton");
 	}
 
 	public void CreateUser(string username, string password, string email){
@@ -121,4 +137,38 @@ public class Register : MonoBehaviour {
 		WWW www = new WWW(CreateUserURL, form);
 		Debug.Log("Registration completed");
 	}
+
+	public void GetUserId() {
+ 		WWWForm form = new WWWForm();
+		//making the form
+		form.AddField("usernamePost", Username);
+		WWW www = new WWW(getUserIdURL, form);
+		StartCoroutine(WaitForRequestUserId(www));
+ 	}
+
+	public void backToTheFirstScene () {
+		SceneManager.LoadScene("FirstScene");
+	}
+
+	public void CreateScoreEntryForUser() {
+		Debug.Log("CreateScoreEntryForUser ->" + userId);
+		WWWForm form = new WWWForm();
+		//making the form
+		Debug.Log(userId);
+		form.AddField("idPost", Register.userId);
+		WWW www = new WWW(insertScoreForUserURL, form);
+		StartCoroutine(WaitForRequestInsertScore(www));
+	}
+
+	IEnumerator WaitForRequestInsertScore(WWW www) {
+	    yield return www;
+	    // check for errors
+	    if (www.error == null) {
+	        //Assign the data that was fetched to the variable answer
+	        Debug.Log(www.text);
+	    } else {
+	        Debug.Log(www.error);
+	    }    
+ 	}
+
 }

@@ -8,7 +8,7 @@ public class JumpScript : MonoBehaviour {
 	public static bool jumpAgain;
 	private Rigidbody rb;
 	public float speed = 10f;
-	private int score;
+	public static int score;
 	public Text scoreText;
 
 	public GameObject life1;
@@ -53,7 +53,7 @@ public class JumpScript : MonoBehaviour {
 	void OnCollisionEnter (Collision collisionInfo) {
 		if (collisionInfo.gameObject.CompareTag("Ground")) {
 			if (score == 0)	jumpAgain = true;
-			else FindObjectOfType<JumpGameManagement>().EndGame();
+			else FindObjectOfType<GameManagement>().EndGame();
 		} else if(collisionInfo.gameObject.CompareTag("Brick")) {
 			jumpAgain = true;
 		} else if (collisionInfo.gameObject.CompareTag ("award")) {
@@ -67,7 +67,7 @@ public class JumpScript : MonoBehaviour {
 				lives.RemoveAt(lives.Count - 1);
 			} else {
 				lives[lives.Count - 1].SetActive(false);
-				FindObjectOfType<JumpGameManagement>().EndGame();
+				FindObjectOfType<GameManagement>().EndGame();
 			}
 		}
 	}

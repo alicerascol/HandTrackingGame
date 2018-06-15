@@ -17,13 +17,9 @@ public class Login : MonoBehaviour {
 
 	public Text retryText;
 	public GameObject retryPanel;
-	private float restartDelay = 2f;
-	private bool hasLoggedIn = false;
+	private float restartDelay = 4f;
 
 	private string CheckIfExistsURL = "http://localhost/unity_game/check_for_login.php";
-	private string startSessionURL = "http://localhost/unity_game/start_session.php";
-	private string getUserIdFromSessionURL = "http://localhost/unity_game/get_id_from_session.php";
-
 
 	// public Button button;
 	private bool buttonPressed = false;
@@ -41,92 +37,67 @@ public class Login : MonoBehaviour {
 		//in unity variabilele publice trebuie asignate
 		Username = username.GetComponent<InputField> ().text;
 		Password = password.GetComponent<InputField> ().text;
-		if(Username != "" && Password.Length == 6 && !hasLoggedIn) {
-			hasLoggedIn = true; 
+	}
+
+	public void LoginButton() {
+		if(Username == "" || Password == "" ||	Username == null || Password == null) {
+			retryPanel.SetActive(true);
+        	retryText.text = "You must complete all the fields!";
+        	StartCoroutine(WaitBeforeNextStep());
+        	retryPanel.SetActive(false);
+        } else {
 			WWWForm form = new WWWForm();
 			//making the form
 			form.AddField("usernamePost", Username);
 			form.AddField("passwordPost", Password);
 			Debug.Log(Username + " " + Password + " " + form);
 			WWW itemsData = new WWW(CheckIfExistsURL, form);
-			loginButton.onClick.AddListener(delegate {CheckIfExists(itemsData, Username, Password);});
+			CheckIfExists(itemsData, Username, Password);
 		}
-
-		// button.onClick.AddListener(delegate {getUserIdFromSession(wwwSession);});
 	}
 
-
-    //Our Coroutine for getting the data
+	public static string userId;
+	//Our Coroutine for getting the data
 	IEnumerator WaitForRequest(WWW www) {
 		yield return www;
 		// check for errors
 	    if (www.error == null) {
-	        Debug.Log(www.text);
+		    userId = www.text.ToString().Remove(www.text.ToString().Length - 1).Substring(www.text.ToString().Length - 5);
+	    	if (www.text.ToString().StartsWith("User has logged in")) {
+	        	//treci la scena urmatoare
+	        	Invoke("LoadNextScene", restartDelay);
+	        } else {
+	        	retryPanel.SetActive(true);
+	        	retryText.text = www.text.ToString();
+	        	Invoke("RestartScene", restartDelay);
+	        }
 	    } else {
 	        Debug.Log("WWW Error: "+ www.error);
 	    } 
 	}
 
-	//asteapta raspunsul;
-	//stocheaza id-ul sesiunii la cheia "sessionIdPost"
-	//salveaza static obiectul de tip WWW pentru acces simplu la pagini web
-	IEnumerator WaitForRequestForSession(WWW www) {
-		yield return www;
-	     
-	     // check for errors
-	    if (www.error == null) {
-	        //Assign the data that was fetched to the variable answer
-		    string sessionId = www.text.ToString();
-		    WWWForm form = new WWWForm();
-			//making the form
-			form.AddField("sessionIdPost", sessionId);
-			wwwSession = new WWW(getUserIdFromSessionURL, form);
-	        Debug.Log("sessionId = " + sessionId);
-	    } else {
-	        Debug.Log("WWW Error: "+ www.error);
-	    }    
- 	}
- 
  	//verifica daca exista userul in baza de date
  	//daca exista, pune id pe sesiune
 	public void CheckIfExists(WWW itemsData, string username, string password) {
 		//Start the Coroutine
         StartCoroutine(WaitForRequest(itemsData));
-        if (itemsData.text.ToString().StartsWith("User has logged in")) {
-			putIdOnTheSession(itemsData.text.ToString().Substring(itemsData.text.ToString().Length - 5));
-        	//treci la scena urmatoare
-        	Invoke("LoadNextScene", restartDelay);
-        } else {
-        	Debug.Log("nu exista user");
-        	retryPanel.SetActive(true);
-        	retryText.text = itemsData.text.ToString();
-        	Invoke("RestartScene", restartDelay);
-        }
 	}
+
 	public void RestartScene() {
 		//current scene -> 
 		//SceneManager.LoadScene(SceneManager.GetActiveScene().name)
-		SceneManager.LoadScene("FirstScene");
+		SceneManager.LoadScene("Login");
 	}
+	
 	public void LoadNextScene() {
 		SceneManager.LoadScene("HitPlayButton");
 	}
 
-	public void putIdOnTheSession (string userId) {
-		//dupa ce s a logat user ul iei id-ul
-		Debug.Log("userId = " + userId);
-		WWWForm form = new WWWForm();
-		form.AddField("idPost", userId);
-		//pui pe sesiune id ul userului
-    	WWW www = new WWW(startSessionURL, form);
-       	StartCoroutine(WaitForRequestForSession(www));
-    }
-
-
-	public void getUserIdFromSession(WWW www) {
-		if (!buttonPressed) {
-    	   	StartCoroutine(WaitForRequest(www));
-			buttonPressed = true;
-		}
+	public void backToTheFirstScene () {
+		SceneManager.LoadScene("FirstScene");
+	}
+	
+	IEnumerator WaitBeforeNextStep() {
+	    yield return new WaitForSeconds(3f);
 	}
 }

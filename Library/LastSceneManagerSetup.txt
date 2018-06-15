@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/RegisterAndLogin.unity
+- path: Assets/scenes/JumpingMinionGame.unity
   isLoaded: 1
   isActive: 1
