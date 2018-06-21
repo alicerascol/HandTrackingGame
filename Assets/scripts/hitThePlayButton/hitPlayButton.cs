@@ -12,6 +12,10 @@ public class HitPlayButton : MonoBehaviour {
 	public static string jumpingMinionScore;
 	public static string movingLegoScore;
 	public static string lastGameScore;
+	public static bool playRehabilitationLegoGame;
+	public static bool playEntertainmentLegoGame;
+	public static bool playRehabilitationMinionGame;
+	public static bool playEntertainmentMinionGame;
 
 	public Text welcomeText;
 	public void Start () {
@@ -27,11 +31,27 @@ public class HitPlayButton : MonoBehaviour {
 		welcomeText.text += text;
 	}
 
-	public void playLLGame () {
+	public void playRehabilitationLG () {
+		playRehabilitationLegoGame = true;
+		playEntertainmentLegoGame = false;
 		SceneManager.LoadScene("MovingLegoGame");
 	}
 
-	public void playJMGame () {
+	public void playEntertainmentLG () {
+		playRehabilitationLegoGame = false;
+		playEntertainmentLegoGame = true;
+		SceneManager.LoadScene("MovingLegoGame");
+	}
+
+	public void playRehabilitationJMGame () {
+		playRehabilitationMinionGame = true;
+		playEntertainmentMinionGame = false;
+		SceneManager.LoadScene("JumpingMinionGame");
+	}
+
+	public void playEntertainmentJMGame () {
+		playRehabilitationMinionGame = false;
+		playEntertainmentMinionGame = true;
 		SceneManager.LoadScene("JumpingMinionGame");
 	}
 

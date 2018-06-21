@@ -124,22 +124,6 @@ namespace Leap.Unity {
       }
     }
 
-    private Camera cam;
-    public float speed = 1f;
-
-    public void Start () {
-      cam = GameObject.Find("newCamera").GetComponent<Camera>();
-    }
-
-    public void FixedUpdate () {
-      if(HandModel != null && HandModel.IsTracked && forwardAngleTo <= OnAngle && backwardAngleTo > OnAngle) {
-        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + speed * Time.fixedDeltaTime);
-      }
-      if(HandModel != null && HandModel.IsTracked && backwardAngleTo <= OnAngle && forwardAngleTo > OnAngle) {
-        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z - speed * Time.fixedDeltaTime);
-      }
-    }
-
     private void Awake () {
       // _target = GameObject.FindWithTag("PickupCube");
       watcherCoroutine = fingerPointingWatcher();

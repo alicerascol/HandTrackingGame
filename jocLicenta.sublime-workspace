@@ -1,0 +1,804 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"De",
+				"Debug"
+			],
+			[
+				"en",
+				"endGame"
+			],
+			[
+				"e",
+				"endGame"
+			],
+			[
+				"ga",
+				"gameHasEnded"
+			],
+			[
+				"new",
+				"new_score"
+			],
+			[
+				"game",
+				"gameScore"
+			],
+			[
+				"re",
+				"retryText"
+			],
+			[
+				"S",
+				"SetActive"
+			],
+			[
+				"con",
+				"ConfirmPassword"
+			],
+			[
+				"E",
+				"Equals"
+			],
+			[
+				"Get",
+				"GetUserId"
+			],
+			[
+				"Lo",
+				"Login"
+			],
+			[
+				"bu",
+				"buttonPressed"
+			],
+			[
+				"id",
+				"idPost"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"T",
+				"ToString"
+			],
+			[
+				"user",
+				"userId"
+			],
+			[
+				"has",
+				"hasLoggedIn"
+			],
+			[
+				"de",
+				"Debug"
+			],
+			[
+				"a",
+				"answer"
+			],
+			[
+				"ite",
+				"itemsDataString"
+			],
+			[
+				"use",
+				"userIsCreated"
+			],
+			[
+				"pa",
+				"Password"
+			],
+			[
+				"ema",
+				"Email"
+			],
+			[
+				"Co",
+				"ConfirmPassword"
+			],
+			[
+				"C",
+				"CompareTag"
+			],
+			[
+				"rea",
+				"reachedMarginLeft"
+			],
+			[
+				"ma",
+				"marginRight"
+			],
+			[
+				"mar",
+				"marginLeft"
+			],
+			[
+				"r",
+				"Rotate"
+			],
+			[
+				"tr",
+				"transform"
+			],
+			[
+				"left",
+				"leftPosition"
+			],
+			[
+				"lef",
+				"leftPosition"
+			],
+			[
+				"ri",
+				"rightPosition"
+			],
+			[
+				"jum",
+				"jumpLeft"
+			],
+			[
+				"jump",
+				"jumpRight"
+			],
+			[
+				"pla",
+				"playGroundTouched"
+			],
+			[
+				"fni",
+				"fingerState"
+			],
+			[
+				"camer",
+				"cameraRot"
+			],
+			[
+				"lo",
+				"Log"
+			],
+			[
+				"c",
+				"collisionInfo"
+			],
+			[
+				"on",
+				"onGround"
+			],
+			[
+				"ty",
+				"TYPE_PINKY"
+			],
+			[
+				"pre",
+				"pressD"
+			],
+			[
+				"_",
+				"_target"
+			],
+			[
+				"Ty",
+				"TYPE_PINKY"
+			],
+			[
+				"off",
+				"OffAngle"
+			],
+			[
+				"angle",
+				"angleTo"
+			],
+			[
+				"v",
+				"Vector3"
+			],
+			[
+				"pos",
+				"positionZ"
+			],
+			[
+				"po",
+				"positionZ"
+			],
+			[
+				"X",
+				"xBigger"
+			],
+			[
+				"x",
+				"xSmaller"
+			],
+			[
+				"fin",
+				"fingerDirection"
+			],
+			[
+				"Hand",
+				"HandModel"
+			],
+			[
+				"hand",
+				"handModel"
+			],
+			[
+				"Po",
+				"PointingDirection"
+			],
+			[
+				"get",
+				"gameObject"
+			],
+			[
+				"tar",
+				"_target"
+			],
+			[
+				"clie",
+				"clientList"
+			],
+			[
+				"cl",
+				"clientIdList"
+			],
+			[
+				"clien",
+				"clientList"
+			],
+			[
+				"cli",
+				"clientId"
+			],
+			[
+				"client",
+				"clientIdList"
+			],
+			[
+				"gu",
+				"gutil"
+			],
+			[
+				"scss",
+				"scssCustomInput"
+			],
+			[
+				"inti",
+				"initialList"
+			],
+			[
+				"res",
+				"resultList"
+			],
+			[
+				"file",
+				"filename"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/scripts/legoGame/LegoMovement.cs",
+			"settings":
+			{
+				"buffer_size": 3196,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/scripts/legoGame/MinimapScript.cs",
+			"settings":
+			{
+				"buffer_size": 431,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"sy",
+				"Set Syntax: C#"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 143.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/facultate/licenta/jocLicenta",
+		"/C/facultate/licenta/jocLicenta/Assets",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpinMinionGame",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/entertainmentGame",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/login&register"
+	],
+	"file_history":
+	[
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/LegoMovingAward.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/GameManagement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/hitThePlayButton/HitPlayButton.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/login&register/Register.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/login&register/Login.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/login&register/FirstScene.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpinMinionGame/entertainmentGame/EntertainmentMinionGame.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpinMinionGame/JumpScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/entertainmentGame/EntertainmentLegoGame.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/LegoMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpinMinionGame/rehabilitationGame/JumpingMinionPalmDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpinMinionGame/rehabilitationGame/JumpingMinionFingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpinMinionGame/rehabilitationGame/JumpingMinionFingerDirectionDetector.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/rehabilitationGame/PinchDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/JumpScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/rehabilitationGame/JumpingMinionFingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/FingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/entertainmentGame/EntertainmentMinionGame.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/HitThePlayButton/HitPlayButton.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/legoGame/PalmDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/legoGame/ExtendedFingerDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/PinchDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/EntertainmentLegoGame.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/ProximityDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/DetectorLogicGate.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/EntertainmentLegoGame.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/AbstractHoldDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scenes/testLeap.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/Hands/HandModel.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/Hands/DebugHand.cs",
+		"/C/facultate/licenta/jocLicenta/jocLicenta.sln",
+		"/C/facultate/licenta/jocLicenta/Assets/scenes/test leap.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/PalmDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/ExtendedFingerDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/legoGame/LegoMovementFingerDirectionDetector.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/legoGame/LegoMovementFingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/minionGame/JumpingMinionPalmDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/Utils/Utils.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/minionGame/JumpingMinionFingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/GameWonScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/Hands/HandModelBase.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/MinionGameWonScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/pickACube/CreateCubesScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Modules/Hands/Scripts/MinimalHand.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/JumpGameManagement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/GameManagement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/movingLegoGame/GameWonScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/movingLegoGame/GameManagement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/legoGame/CameraFollowingCubeMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/hitThePlayButton/hitPlayButton.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/movingLegoGame/GameManagement.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/login&register/Login.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/movingLegoGame/LegoMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/RotatingAwards.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/MovingBrick.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/movingLegoGame/LegoMovingAward.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/ScrollBackground.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/JumpingMinionPalmDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/JumpingMinionFingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/Detector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/LegoMovementFingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/LegoMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/JumpingMinionFingerDirectionDetector.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/MinionGameWonScript.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/GameWonScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/GameManagement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/JumpingCubeFingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/MinimapScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/pickACube/MoveCubes.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/CameraFollowingCubeMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/LegoMovement.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Editor/CustomEditorBase.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/materials/playerCubeMovement.mat",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/CubeMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Temp/Compiled-Standard.shader",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/jumpingCubeGame/CameraFollowingJumpingCube.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/buildMesh.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/buildMesh.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/CubeMovementFingerDirectionDetector.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/CubeMovement.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/Score.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/cubeMovementGame/FollowCameraMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/CameraCubeMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/FollowCubeMovementByCamera.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/CubeMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/MoveCubes.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/Pickup.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/CameraMovement.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/MoveCubes.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/ExtendedFingerDetector.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/DetectionUtilities/PalmDirectionDetector.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/CreateCubesScript.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/LeapMotion/Core/Scripts/Algorithms/SmoothedFloat.cs",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/CameraMovement.cs.meta",
+		"/C/facultate/licenta/jocLicenta/Assets/scripts/CreateCubesScript.cs.meta",
+		"/C/Users/Mindit/Documents/digital-sso/Gulpfile.js",
+		"/C/Users/Mindit/Documents/alice/parseDirForGulp.js",
+		"/C/Users/Mindit/Documents/digital-sso/parseDir.js"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 107.2,
+		"where_history":
+		[
+			"",
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"CheckIfExists",
+			"CreateUser",
+			", ",
+			"VelocityChange",
+			"gamewonpanel",
+			"gameonpanel",
+			"panel =",
+			"panel ",
+			"oncolliderenter",
+			"oncollider",
+			"jumpAgain = ",
+			"jumpAgain = true",
+			"minion.",
+			"minion",
+			"rb",
+			"initialPlayerPosition",
+			"GameObject.FindWithTag",
+			";\n",
+			"IsPinching",
+			"IsHolding",
+			"if",
+			"OnCollisionEnter",
+			"OnTriggerEnter",
+			"void OnCollisionEnter(",
+			"playground",
+			"void collision",
+			"voi collision",
+			"collision",
+			"leaphandcontroller",
+			"GetArmCenter",
+			"debugHand"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"player.",
+			"player"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/scripts/legoGame/LegoMovement.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3196,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2286,
+								2302
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1008.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/scripts/legoGame/MinimapScript.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 431,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								152,
+								152
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 38.4
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 114.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "jocLicenta.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"minimapsc",
+				"Assets\\scripts\\legoGame\\MinimapScript.cs"
+			],
+			[
+				"first",
+				"Assets\\scripts\\login&register\\FirstScene.cs"
+			],
+			[
+				"gamema",
+				"Assets\\scripts\\GameManagement.cs"
+			],
+			[
+				"legomo",
+				"Assets\\scripts\\legoGame\\LegoMovement.cs"
+			],
+			[
+				"test",
+				"Assets\\scripts\\legoGame\\testLeap.cs"
+			],
+			[
+				"gamemana",
+				"scripts\\movingLegoGame\\GameManagement.cs"
+			],
+			[
+				"regi",
+				"scripts\\login&register\\Register.cs"
+			],
+			[
+				"lo",
+				"scripts\\login&register\\Login.cs"
+			],
+			[
+				"login",
+				"scripts\\login&register\\Login.cs"
+			],
+			[
+				"register",
+				"scripts\\login&register\\Register.cs"
+			],
+			[
+				"hit",
+				"scripts\\hitThePlayButton\\hitPlayButton.cs"
+			],
+			[
+				"palmde",
+				"LeapMotion\\Core\\Scripts\\DetectionUtilities\\PalmDirectionDetector.cs"
+			],
+			[
+				"gamewo",
+				"scripts\\movingLegoGame\\GameWonScript.cs"
+			],
+			[
+				"jump",
+				"scripts\\jumpingCubeGame\\JumpScript.cs"
+			],
+			[
+				"movin",
+				"scripts\\jumpingCubeGame\\MovingBrick.cs"
+			],
+			[
+				"movingbri",
+				"scripts\\jumpingCubeGame\\MovingBrick.cs"
+			],
+			[
+				"fin",
+				"LeapMotion\\Core\\Scripts\\DetectionUtilities\\LegoMovementFingerDirectionDetector.cs"
+			],
+			[
+				"cube",
+				"scripts\\pickACube\\MoveCubes.cs"
+			],
+			[
+				"camera",
+				"scripts\\cubeMovementGame\\CameraFollowingCubeMovement.cs"
+			],
+			[
+				"pin",
+				"LeapMotion\\Core\\Scripts\\DetectionUtilities\\PinchDetector.cs"
+			],
+			[
+				"moveme",
+				"scripts\\cubeMovementGame\\CubeMovement.cs"
+			],
+			[
+				"jum",
+				"LeapMotion\\Core\\Scripts\\DetectionUtilities\\JumpingCubeFingerDirectionDetector.cs"
+			],
+			[
+				"minic",
+				"scripts\\cubeMovementGame\\MinimapScript.cs"
+			],
+			[
+				"cubem",
+				"scripts\\cubeMovementGame\\CubeMovement.cs"
+			],
+			[
+				"fingerd",
+				"LeapMotion\\Core\\Scripts\\DetectionUtilities\\FingerDirectionDetector.cs"
+			],
+			[
+				"/game",
+				"scripts\\cubeMovementGame\\GameWon.cs"
+			],
+			[
+				"game",
+				"scripts\\cubeMovementGame\\GameManagement.cs"
+			],
+			[
+				"score",
+				"scripts\\cubeMovementGame\\Score.cs"
+			],
+			[
+				"foll",
+				"scripts\\FollowCubeMovementByCamera.cs"
+			],
+			[
+				"cubemo",
+				"scripts\\CubeMovement.cs"
+			],
+			[
+				"move",
+				"MoveCubes.cs"
+			],
+			[
+				"fingerDe",
+				"LeapMotion\\Core\\Scripts\\DetectionUtilities\\FingerDirectionDetector.cs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 378.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

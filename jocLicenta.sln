@@ -1,29 +1,15 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jocLicenta", "Assembly-CSharp.csproj", "{8AABC60F-9805-1846-0594-6F5093272F52}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jocLicenta", "Assembly-CSharp-Editor.csproj", "{4F7DDB4E-530C-C95C-50DC-5380A9BE1177}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8AABC60F-9805-1846-0594-6F5093272F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AABC60F-9805-1846-0594-6F5093272F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AABC60F-9805-1846-0594-6F5093272F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AABC60F-9805-1846-0594-6F5093272F52}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F7DDB4E-530C-C95C-50DC-5380A9BE1177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F7DDB4E-530C-C95C-50DC-5380A9BE1177}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F7DDB4E-530C-C95C-50DC-5380A9BE1177}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F7DDB4E-530C-C95C-50DC-5380A9BE1177}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
-	EndGlobalSection
-EndGlobal
+﻿{
+ "folders":
+ [
+  {
+  "follow_symlinks": true,
+  "path": "Assets/Scripts",
+   "file_exclude_patterns":
+   [
+    "*.dll",
+    "*.meta"
+   ]
+  }
+ ],
+ "solution_file": "./jocLicenta.sln"
+}

@@ -22,7 +22,6 @@ public class Register : MonoBehaviour {
 	private string CheckIfExistsURL = "http://localhost/unity_game/check_if_user_exists.php";
 	private string getUserIdURL = "http://localhost/unity_game/get_user_id.php";
 	private string insertScoreForUserURL = "http://localhost/unity_game/insert_scores_for_user.php";
-	// private bool userIsCreated = false;
 
 	public Text retryText;
 	public GameObject retryPanel;

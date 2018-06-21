@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Leap.Unity;
 
 public class LegoMovement : MonoBehaviour {
 
@@ -19,6 +20,8 @@ public class LegoMovement : MonoBehaviour {
 	public GameObject life3;
 	private List<GameObject> lives;
 	private bool endGame;
+
+	private GameObject gameManager;
 	// Use this for initialization
 	void Start () {
 		speed = 500f;	
@@ -29,6 +32,16 @@ public class LegoMovement : MonoBehaviour {
 	    lives.Add(life2);
 	    lives.Add(life3);
 	    endGame = false;
+	    gameManager = GameObject.FindWithTag("LegoGameManager");
+	    if (HitPlayButton.playRehabilitationLegoGame && !HitPlayButton.playEntertainmentLegoGame) {
+ 			gameManager.GetComponent<EntertainmentLegoGame>().enabled = false;
+ 			gameManager.GetComponent<PalmDirectionDetector>().enabled = true;
+ 			gameManager.GetComponent<PinchDetector>().enabled = true;
+	    } else if (!HitPlayButton.playRehabilitationLegoGame && HitPlayButton.playEntertainmentLegoGame) {
+ 			gameManager.GetComponent<EntertainmentLegoGame>().enabled = true;
+ 			gameManager.GetComponent<PalmDirectionDetector>().enabled = false;
+ 			gameManager.GetComponent<PinchDetector>().enabled = false;
+	    }
 	}
 	
 	void Update () {
@@ -68,7 +81,13 @@ public class LegoMovement : MonoBehaviour {
 				//cu scripturi separate pt collision si pt movement => referinta la movementScript -> referinta.enabled = false;
 				FindObjectOfType<GameManagement>().EndGame();
 			}
-		} 
+		}
+
+		if (collisionInfo.gameObject.tag.Equals("Ground")) {
+			EntertainmentLegoGame.playGroundTouched = true;
+			PinchDetector.playGroundTouched = true;
+		}
+
 	}
 
 	void OnTriggerEnter (Collider colliderInfo) {

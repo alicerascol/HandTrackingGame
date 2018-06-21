@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlayGround
   - PickupCube
   - Obstacle
   - Ground
@@ -17,6 +16,8 @@ TagManager:
   - SouthWall
   - PlayerMinionJumping
   - Coin
+  - MinionGameManager
+  - LegoGameManager
   layers:
   - Default
   - TransparentFX

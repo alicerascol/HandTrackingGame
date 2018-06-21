@@ -11,10 +11,18 @@ public class GameManagement : MonoBehaviour {
 	private bool gameHasEnded = false;
 	private float restartDelay = 3f;
 	public GameObject gameWonPanel;
+	public GameObject gamePausePanel;
 	public Text gameWonText;
 	public GameObject retryPanel;
 	public Text retryText;
 	private string PostNewBestScoreURL = "http://localhost/unity_game/update_scores.php";
+
+	void Update () {
+		if (Input.GetKey("q")) {
+			Time.timeScale = 0;
+			GamePausePanel();
+		}
+	}
 
 	public void PostNewBestScore (string gameName, string gameScore) {
 		WWWForm form = new WWWForm();
@@ -96,6 +104,16 @@ public class GameManagement : MonoBehaviour {
 
 	public void RestartGame() {
 		gameHasEnded = false;
+		Time.timeScale = 1;
 		SceneManager.LoadScene("HitPlayButton");
+	}
+
+	public void GamePausePanel() {
+		gamePausePanel.SetActive(true);
+	}
+
+	public void Play() {
+		gamePausePanel.SetActive(false);
+		Time.timeScale = 1;
 	}
 }

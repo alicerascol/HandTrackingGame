@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/JumpingMinionGame.unity
+- path: Assets/scenes/MovingLegoGame.unity
   isLoaded: 1
   isActive: 1
